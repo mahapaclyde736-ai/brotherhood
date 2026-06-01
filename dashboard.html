@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Dashboard</title>
+
+  <link rel="stylesheet" href="variables.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <span class="nav-title">Clock System</span>
+
+    <div>
+      <span id="user-name">Loading...</span>
+
+      <button
+        id="logout-btn"
+        class="btn btn-secondary">
+        Log Out
+      </button>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <div class="clock-card">
+
+      <p id="current-time" class="clock-display">
+        00:00:00
+      </p>
+
+      <p id="clock-status">
+        You are currently:
+        <strong>Clocked Out</strong>
+      </p>
+
+      <button
+        id="clock-btn"
+        class="btn btn-clock">
+        Clock In
+      </button>
+
+    </div>
+
+    <section class="history-section">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>In</th>
+            <th>Out</th>
+            <th>Hours</th>
+          </tr>
+        </thead>
+
+        <tbody id="history-body"></tbody>
+
+      </table>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    // =========================
+    // AUTH GUARD
+    // =========================
+
+    const loggedInUser =
+      localStorage.getItem("loggedInUser");
+
+    // If user is not logged in
+    if (!loggedInUser) {
+
+      // Redirect to login page
+      window.location.href = "index.html";
+
+    }
+
+    // Display logged in user
+    document.getElementById("user-name")
+      .textContent = loggedInUser;
+
+    // =========================
+    // LOGOUT
+    // =========================
+
+    const logoutBtn =
+      document.getElementById("logout-btn");
+
+    logoutBtn.addEventListener("click", () => {
+
+      // Remove login session
+      localStorage.removeItem("loggedInUser");
+
+      // Redirect to login page
+      window.location.href = "index.html";
+
+    });
+
+    // =========================
+    // LIVE CLOCK
+    // =========================
+
+    const currentTime =
+      document.getElementById("current-time");
+
+    function updateClock() {
+
+      const now = new Date();
+
+      currentTime.textContent =
+        now.toLocaleTimeString();
+
+    }
+
+    setInterval(updateClock, 1000);
+
+    updateClock();
+
+  </script>
+
+  <script src="utilityFunc.js"></script>
+
+</body>
+</html>

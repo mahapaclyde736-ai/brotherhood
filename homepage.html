@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gifford Staff Clock System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <img src="public/favicon.svg" class="nav-logo-img" alt="Gifford logo">
+      <div class="nav-brand-text">
+        <span class="nav-brand-name">Gifford High</span>
+        <span class="nav-brand-sub">Clock System</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html"     class="nav-ghost">Staff Login</a>
+      <a href="admin.html"     class="nav-solid">Admin Panel</a>
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          Staff Attendance Platform
+        </div>
+        <p class="hero-school">Gifford High School</p>
+        <h1 class="hero-title">
+          <span class="yellow">Track Time.</span><br>
+          Manage Staff.<br>
+          Stay in Control.
+        </h1>
+        <p class="hero-desc">
+          A simple, secure clock-in system built for Gifford staff. Teachers clock in and out with one click. Admins see real-time attendance — no paper, no guessing.
+        </p>
+        <div class="hero-actions">
+          <a href="index.html" class="btn-primary">
+            Sign In to Clock
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="admin.html" class="btn-ghost">Admin Dashboard</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="crest-wrap">
+          <div class="crest-ring"></div>
+          <div class="crest-ring-2"></div>
+          <div class="crest-bg">
+            <img src="public/favicon.svg" class="crest-img" alt="Attendance crest">
+          </div>
+          <div class="crest-time" id="hero-time">00:00</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stats-inner">
+      <div class="stat">
+        <div class="stat-num">1-Click</div>
+        <div class="stat-lbl">Clock In &amp; Out</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Real-Time</div>
+        <div class="stat-lbl">Admin Visibility</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">CSV</div>
+        <div class="stat-lbl">Export Reports</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="portals">
+    <div class="portals-inner">
+      <div class="section-tag">Access Portals</div>
+      <div class="section-heading">Where do you need to go?</div>
+      <div class="cards">
+
+        <a href="index.html" class="card">
+          <div class="card-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+          </div>
+          <div class="card-title">Staff Login</div>
+          <div class="card-body">Teachers sign in here to clock in and out, view their attendance history, and track daily hours.</div>
+          <div class="card-link">
+            Go to login
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </a>
+
+        <a href="admin.html" class="card card-maroon">
+          <div class="card-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+            </svg>
+          </div>
+          <div class="card-title">Admin Panel</div>
+          <div class="card-body">View real-time staff attendance, see who is in or out today, and export full CSV reports instantly.</div>
+          <div class="card-link">
+            Go to admin
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </a>
+
+        <a href="dashboard.html" class="card card-yellow">
+          <div class="card-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="card-title">My Dashboard</div>
+          <div class="card-body">Your personal attendance dashboard. See your clock history and current status at a glance.</div>
+          <div class="card-link">
+            Go to dashboard
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="features-inner">
+      <div>
+        <div class="section-tag">Why It Works</div>
+        <div class="section-heading" >Built for Gifford staff</div>
+        <div class="feat-list">
+          <div class="feat">
+            <div class="feat-dot"></div>
+            <div>
+              <h3>Secure Sessions</h3>
+              <p>Every login is protected with hashed passwords and secure HTTP-only session cookies that expire after 8 hours.</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-dot"></div>
+            <div>
+              <h3>Role-Based Access</h3>
+              <p>Teachers see only their own data. Admins see everything. No accidental cross-access.</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-dot"></div>
+            <div>
+              <h3>30-Day History</h3>
+              <p>Staff can review their last 30 days of attendance with accurate hours calculated automatically.</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-dot"></div>
+            <div>
+              <h3>Instant CSV Export</h3>
+              <p>Admins can download a full attendance report as a spreadsheet with one click.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <img src="public/favicon.svg" class="cta-logo" alt="Clock in illustration">
+        <h2>Ready to clock in?</h2>
+        <p>Use your Gifford school email and password to sign in. Contact your administrator if you need access.</p>
+        <a href="index.html" class="btn-primary" >
+          Sign In Now
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  
+</body>
+</html>
