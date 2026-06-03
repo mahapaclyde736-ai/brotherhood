@@ -9,6 +9,9 @@ import BasicRoute from './Routes/RouteController.js'
 const server = express()
 const port = 1111
 
+// testing if our api works 
+
+
 server.listen(port,()=>{
     console.log(`server is running on http//:localhost/${port}`)
 })
