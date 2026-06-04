@@ -8,7 +8,7 @@ const BasicRoute = express.Router()
 // for example to request for data is to fetch or get it by normal http standards
 
 // to add something in your database you use PUT
-BasicRoute.put(`/createUser`,CreateUser)
+BasicRoute.post(`/createUser`,CreateUser)
 
 
 export default BasicRoute

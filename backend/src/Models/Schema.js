@@ -4,7 +4,7 @@ import mongoose, { mongo } from 'mongoose'
 const UserSchema = new mongoose.Schema(
     {
         name: {type:String,required:true},
-        surename : {type:String, required:true},
+        surname : {type:String, required:true},
         email:{type:String,required:true},
         role:{type:String,requored:true},
         department:{type:String,required:true},
@@ -14,6 +14,6 @@ const UserSchema = new mongoose.Schema(
     }
 )
 
-const UsersModel =  mongoose.model('User',UserSchema)
+const UsersModel =  mongoose.model('Users',UserSchema)
 
 export default UsersModel

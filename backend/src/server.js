@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { json } from 'express'
 // Cors this allows are frontend to make api calls without getting flagged 
 import cors from 'cors'
 
@@ -11,6 +11,7 @@ import BasicRoute from './Routes/RouteController.js'
 const server = express()
 const port = 1111
 
+server.use(json())
 // testing if our api works 
 server.use("api/",BasicRoute)
 
