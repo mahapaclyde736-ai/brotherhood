@@ -2,7 +2,8 @@ import mongoose, { mongo } from "mongoose";
 
 function DatabaseCon(){
     // connection string goes here
-    mongoose.connection()
+    mongoose.connect("mongodb://127.0.0.1:27017/Clockin")
+    console.log("database connected successfully")
 }
 
 function Connection(){
