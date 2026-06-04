@@ -12,7 +12,7 @@ const server = express()
 const port = 1111
 
 // testing if our api works 
-
+server.use("api/",BasicRoute)
 
 server.listen(port,()=>{
     Connection()
