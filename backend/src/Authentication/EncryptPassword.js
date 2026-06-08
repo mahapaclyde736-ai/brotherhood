@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt'
 
-async function HashPassword(password){
-    const HashedPassword = await bcrypt.hash(password,10)
-    console.log("calling hash")
-    return HashPassword
+function HashPassword(password){
+    const HashedPassword = bcrypt.hash(password,10)
+    console.log("hasg function running")
+    return HashedPassword
 }
 
 export default HashPassword

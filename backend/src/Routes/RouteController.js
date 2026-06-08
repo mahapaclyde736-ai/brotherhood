@@ -1,6 +1,6 @@
 import express from 'express'
 // import User api/code 
-import { CreateUser } from '../Logic/UserLogic.js'
+import { CreateUser,UpdateUserByID,DeleteAllUsers } from '../Logic/UserLogic.js'
 
 const BasicRoute = express.Router()
 
@@ -8,7 +8,8 @@ const BasicRoute = express.Router()
 // for example to request for data is to fetch or get it by normal http standards
 
 // to add something in your database you use PUT
-BasicRoute.post(`/createUser`,CreateUser)
-
+BasicRoute.put(`/createUser`,CreateUser)
+BasicRoute.patch(`/UpdateUserById/:id`,UpdateUserByID)
+BasicRoute.delete("/DeleteAllUsers",DeleteAllUsers)
 
 export default BasicRoute
