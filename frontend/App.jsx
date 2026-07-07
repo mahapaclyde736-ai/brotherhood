@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, Link, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, Link } from 'react-router-dom'
 import './index.css'
 import Navbar from './components/Navbar.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
@@ -13,22 +13,46 @@ import { getMe } from './api/auth.js'
 function Home() {
   return (
     <section className="page page-home">
-      <h1>Welcome to ClockInClockOut</h1>
-      <p>Use the navbar to sign out and navigate through the app.</p>
-      <Link to="/dashboard" className="btn btn-primary">
-        Go to Dashboard
-      </Link>
+      <div className="container">
+        <h1>Welcome to ClockInClockOut</h1>
+        <p className="lead">Quickly track your attendance, see your history, and stay on top of notices — all in one simple app.</p>
+
+        <div className="cta-row">
+          <Link to="/dashboard" className="btn btn-primary btn-cta">Go to Dashboard</Link>
+          <Link to="/login" className="btn btn-cta" style={{ background: 'transparent', border: '1px solid rgba(30,58,95,0.08)', color: 'var(--primary)' }}>Sign In</Link>
+        </div>
+      </div>
     </section>
   )
 }
 
 function App() {
   const [userName, setUserName] = useState('')
+  const isAuthenticated = Boolean(userName)
 
   useEffect(() => {
-    getMe()
-      .then(data => { if (!data.error) setUserName(data.name) })
-      .catch(err => console.error('Failed to fetch user:', err))
+    const fetchUser = async () => {
+      try {
+        const data = await getMe()
+        if (!data.error) {
+          setUserName(data.name)
+        } else {
+          setUserName('')
+        }
+      } catch (err) {
+        console.error('Failed to fetch user:', err)
+        setUserName('')
+      }
+    }
+
+    fetchUser()
+
+    const handleAuthChanged = () => {
+      fetchUser()
+    }
+
+    window.addEventListener('authChanged', handleAuthChanged)
+    return () => window.removeEventListener('authChanged', handleAuthChanged)
   }, [])
 
   return (
