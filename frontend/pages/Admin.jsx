@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getAdminToday, updateUser, setUserStatus, deleteRecord, getReport } from '../api/auth.js'
-import Navbar from '../components/Navbar.jsx'
+// Navbar is provided at the App level; removed to avoid duplicate navigation bars
 import Toast from '../components/Toast.jsx'
 import ConfirmDialog from '../components/ConfirmDialog.jsx'
 
@@ -50,8 +50,12 @@ export default function Admin() {
     }
   }, [navigate])
 
-  async function handleEdit(field, value) {
-    const result = await updateUser(editing.id, { [field]: value })
+  async function handleEdit(updates) {
+    if (!editing) {
+      return
+    }
+
+    const result = await updateUser(editing.id, updates)
     if (result.error) {
       setToast({ message: result.error, type: 'error' })
       return
@@ -110,7 +114,6 @@ export default function Admin() {
 
   return (
     <>
-      <Navbar title='Admin Panel' />
       <main className='container'>
         <div className='admin-stats'>
           <div className='stat-card'><h3>{countIn}</h3><p>Currently In</p></div>
@@ -265,7 +268,7 @@ function EditModal({ member, onClose, onSave }) {
         ))}
         <div style={{ display: 'flex', gap: 10, marginTop: 16, justifyContent: 'flex-end' }}>
           <button onClick={onClose}>Cancel</button>
-          <button onClick={() => { onSave('name', name); onSave('email', email); onSave('department', department) }} className='btn btn-primary'>
+          <button onClick={() => onSave({ name, email, department })} className='btn btn-primary'>
             Save Changes
           </button>
         </div>
