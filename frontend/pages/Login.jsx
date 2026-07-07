@@ -27,6 +27,7 @@ export default function Login() {
         return
       }
 
+      window.dispatchEvent(new Event('authChanged'))
       navigate(data?.role === 'admin' ? '/admin' : '/dashboard')
     } catch (err) {
       console.error(err)
