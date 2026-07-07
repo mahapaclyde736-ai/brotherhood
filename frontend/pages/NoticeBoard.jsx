@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getNotices, createNotice, deleteNotice } from '../api'
-import Navbar from '../components/Navbar'
+// Navbar is provided at the App level; removed to avoid duplicate navigation bars
 import Toast  from '../components/Toast'
 import ConfirmDialog from '../components/ConfirmDialog'
 
@@ -58,7 +58,7 @@ export default function NoticeBoard() {
   }, [page])
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/me', { credentials: 'include' })
+    fetch('/api/me', { credentials: 'include' })
       .then(r => r.json())
       .then(data => {
         setRole(data.role)
@@ -169,7 +169,6 @@ export default function NoticeBoard() {
 
   return (
     <>
-      <Navbar title='Notice Board' userName={userName} />
       <main className='container'>
 
         {role === 'admin' && (
