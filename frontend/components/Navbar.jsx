@@ -3,11 +3,12 @@ import { logout } from '../api/auth.js'
 
 export default function Navbar({ title, userName }) {
   const navigate = useNavigate()
+  const isAuthenticated = Boolean(userName)
 
   async function handleLogout() {
     try {
       await logout()
-      navigate('/')
+      navigate('/login')
     } catch (error) {
       console.error('Logout failed:', error)
     }
@@ -17,23 +18,20 @@ export default function Navbar({ title, userName }) {
     <nav className='navbar'>
       <span className='nav-title'>{title}</span>
       <div className='nav-right'>
-        {userName && <span className='nav-user'>{userName}</span>}
-        <button
-          type='button'
-          className='btn btn-secondary'
-          onClick={() => navigate('/change-password')}
-        >
-          Change Password
-        </button>
-        <Link
-          to='/notices'
-          style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', textDecoration: 'none' }}
-        >
-          Notice Board
-        </Link>
-        <button onClick={handleLogout} className='btn btn-secondary'>
-          Log Out
-        </button>
+        <Link to='/' className='nav-link'>Home</Link>
+        {isAuthenticated ? (
+          <>
+            <Link to='/dashboard' className='nav-link'>Dashboard</Link>
+            <Link to='/notices' className='nav-link'>Notice Board</Link>
+            <Link to='/change-password' className='nav-link'>Change Password</Link>
+            <span className='nav-user'>{userName}</span>
+            <button onClick={handleLogout} className='btn btn-secondary'>
+              Log Out
+            </button>
+          </>
+        ) : (
+          <Link to='/login' className='btn btn-primary'>Log In</Link>
+        )}
       </div>
     </nav>
   )
