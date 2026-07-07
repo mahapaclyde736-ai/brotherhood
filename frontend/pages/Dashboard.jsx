@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getHistory, getMe } from '../api/auth.js'
-import Navbar from '../components/Navbar.jsx'
+// Navbar is provided at the App level; removed to avoid duplicate navigation bars
 import ClockCard from '../components/ClockCard.jsx'
 
 function formatTime(iso) {
@@ -39,7 +39,6 @@ export default function Dashboard() {
 
   return (
     <>
-      <Navbar title='My Dashboard' userName={userName} />
       <main className='container'>
         <ClockCard onClockEvent={loadHistory} />
 
@@ -58,7 +57,8 @@ export default function Dashboard() {
               onChange={e => setFilter(e.target.value)}
             />
           </div>
-          <table>
+          <div className="table-wrapper">
+            <table>
             <thead>
               <tr><th>Date</th><th>Clock In</th><th>Clock Out</th><th>Status</th></tr>
             </thead>
@@ -80,7 +80,8 @@ export default function Dashboard() {
                   ))
               }
             </tbody>
-          </table>
+            </table>
+          </div>
         </section>
       </main>
     </>
