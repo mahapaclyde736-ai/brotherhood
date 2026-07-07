@@ -12,13 +12,13 @@ export default function ProtectedRoute({ children, role }) {
       .then((data) => {
         // If the user is not authenticated, redirect to login
         if (data.error) {
-          navigate('/')
+          navigate('/login')
           return
         }
 
         // If the route requires a specific role, enforce it
         if (role && data.role !== role) {
-          navigate('/')
+          navigate('/login')
           return
         }
 
@@ -27,7 +27,7 @@ export default function ProtectedRoute({ children, role }) {
       })
       .catch((error) => {
         console.error('Auth check failed:', error)
-        navigate('/')
+        navigate('/login')
       })
   }, [navigate, role])
 
